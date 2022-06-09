@@ -1,4 +1,4 @@
-#include !\TTSCarcassonne\scripts\control_panel_common
+#include !/TTSCarcassonne/scripts/control_panel_common
 
 local ROW_1 = 5.3
 local ROW_2 = 2.4

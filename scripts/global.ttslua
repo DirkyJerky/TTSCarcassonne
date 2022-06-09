@@ -480,56 +480,56 @@ controlPanelSettings = {
     ['CoCNoCount'] = false,
 }
 
-#include !\TTSCarcassonne\tile_data\tile_data
+#include !/TTSCarcassonne/tile_data/tile_data
 
-#include !\TTSCarcassonne\scripts\localization
+#include !/TTSCarcassonne/scripts/localization
 
-#include !\TTSCarcassonne\scripts\stats
+#include !/TTSCarcassonne/scripts/stats
 
-#include !\TTSCarcassonne\scripts\setup_helpers
+#include !/TTSCarcassonne/scripts/setup_helpers
 
-#include !\TTSCarcassonne\scripts\expansion_rivers
+#include !/TTSCarcassonne/scripts/expansion_rivers
 
-#include !\TTSCarcassonne\scripts\expansion_inns_cathedrals
+#include !/TTSCarcassonne/scripts/expansion_inns_cathedrals
 
-#include !\TTSCarcassonne\scripts\expansion_traders_builders
+#include !/TTSCarcassonne/scripts/expansion_traders_builders
 
-#include !\TTSCarcassonne\scripts\expansion_abbey_mayor
+#include !/TTSCarcassonne/scripts/expansion_abbey_mayor
 
-#include !\TTSCarcassonne\scripts\expansion_count_king_robber
+#include !/TTSCarcassonne/scripts/expansion_count_king_robber
 
-#include !\TTSCarcassonne\scripts\expansion_princess_dragon
+#include !/TTSCarcassonne/scripts/expansion_princess_dragon
 
-#include !\TTSCarcassonne\scripts\expansion_hills_sheep
+#include !/TTSCarcassonne/scripts/expansion_hills_sheep
 
-#include !\TTSCarcassonne\scripts\expansion_tower
+#include !/TTSCarcassonne/scripts/expansion_tower
 
-#include !\TTSCarcassonne\scripts\expansion_flier
+#include !/TTSCarcassonne/scripts/expansion_flier
 
-#include !\TTSCarcassonne\scripts\expansion_ferries
+#include !/TTSCarcassonne/scripts/expansion_ferries
 
-#include !\TTSCarcassonne\scripts\expansion_goldmines
+#include !/TTSCarcassonne/scripts/expansion_goldmines
 
-#include !\TTSCarcassonne\scripts\state_machine
+#include !/TTSCarcassonne/scripts/state_machine
 
-#include !\TTSCarcassonne\scripts\setup_game
+#include !/TTSCarcassonne/scripts/setup_game
 
-#include !\TTSCarcassonne\scripts\tts_events
+#include !/TTSCarcassonne/scripts/tts_events
 
-#include !\TTSCarcassonne\scripts\hint_markers
+#include !/TTSCarcassonne/scripts/hint_markers
 
-#include !\TTSCarcassonne\scripts\move_validation
+#include !/TTSCarcassonne/scripts/move_validation
 
-#include !\TTSCarcassonne\scripts\feature_map_management
+#include !/TTSCarcassonne/scripts/feature_map_management
 
-#include !\TTSCarcassonne\scripts\tile_traversal
+#include !/TTSCarcassonne/scripts/tile_traversal
 
-#include !\TTSCarcassonne\scripts\ai
+#include !/TTSCarcassonne/scripts/ai
 
-#include !\TTSCarcassonne\scripts\debug
+#include !/TTSCarcassonne/scripts/debug
 
-#include !\TTSCarcassonne\scripts\helper_functions
+#include !/TTSCarcassonne/scripts/helper_functions
 
-#include !\TTSCarcassonne\scripts\json
+#include !/TTSCarcassonne/scripts/json
 
-#include !\TTSCarcassonne\scripts\game_logic
+#include !/TTSCarcassonne/scripts/game_logic

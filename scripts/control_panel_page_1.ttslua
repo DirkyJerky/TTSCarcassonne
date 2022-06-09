@@ -1,4 +1,4 @@
-#include !\TTSCarcassonne\scripts\control_panel_common
+#include !/TTSCarcassonne/scripts/control_panel_common
 
 local LANGUAGE_ICONS = {['en-US'] = "UK/US Flag", ['nl-NL'] = "NL Flag", ['zh-TW'] = "TW Flag"}
 
