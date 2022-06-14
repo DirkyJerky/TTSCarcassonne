@@ -403,6 +403,8 @@ function onObjectPickUp(player, pickedUpObject)
         lastDroppedTime = 0
     end
 
+    HaSOnPickup(pickedUpObject)
+
     if tostring(pickedUpObject) == 'Card(Clone) (LuaGameObjectScript)' and getTileDataForTile(pickedUpObject).sides ~= nil then
         pickedUpObject.clearButtons()
         local xPosition = (pickedUpObject.getPosition().x + MIDDLE_OFFSET.x) / TILE_SPACING

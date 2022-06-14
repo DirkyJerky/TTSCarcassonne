@@ -1,6 +1,7 @@
 --Encapsulate the behavior of the Hills and Sheep expansion (HaS)
 
 local shepherdAwaitingAction = nil
+local flockTracker = {}
 
 --Scoring data specific to expansion
 function HaSInitializeScoreSummary(player)
@@ -143,6 +144,7 @@ function HaSAddSheepToFieldCoroutine()
                             sheepTileBag.shuffle()
                             drawingSheepLock = true
                             local newTile = sheepTileBag.takeObject(params)
+                            table.insert(flockTracker[shepherd.getGUID()], newTile.getGUID())
                             while drawingSheepLock do
                                 coroutine.yield(0)
                             end
@@ -215,6 +217,7 @@ function HaSAddSheepToTileCoroutine()
 
                         sheepTileBag.shuffle()
                         drawingSheepLock = true
+                        table.insert(flockTracker[shepherd.getGUID()], newTile.getGUID())
                         local newToken = sheepTileBag.takeObject(params)
                         while drawingSheepLock do
                             coroutine.yield(0)
@@ -251,6 +254,7 @@ function HaSAddSheepToShepherd(shepherd)
         sheepTileBag.shuffle()
         drawingSheepLock = true
         local newTile = sheepTileBag.takeObject(params)
+        table.insert(flockTracker[shepherd.getGUID()], newTile.getGUID())
         while drawingSheepLock do
             coroutine.yield(0)
         end
@@ -265,6 +269,14 @@ function HaSAddSheepToShepherd(shepherd)
 end
 
 function HaSAddSheep(shepherd)
+    if flockTracker == nil then
+      flockTracker = {}
+    end
+
+    if flockTracker[shepherd.getGUID()] == nil then
+      flockTracker[shepherd.getGUID()] = {}
+    end
+
     if controlPanelSettings['PnDDragon'] then
         HaSAddSheepToTile(shepherd)
     else
@@ -301,7 +313,39 @@ function HaSScoreFlockCoroutine()
         local score = 0
         local hasWolf = false
 
+        -- Merge the list of sheep on the field and sheep tracked by each shepherd
+        local fullFlockWithDups = {}
+
+        -- Build the list, with duplicates
+
+        -- Use traversed tokens in case the players decide to add any sheep directly from the bag
         for _, token in ipairs(traversedSheepTokens) do
+            --log('traversal found ' .. token.getGUID())
+            table.insert(fullFlockWithDups, token)
+        end
+
+        for _, figure in ipairs(traversedSpecialFigures) do
+            if figure.getVar('figureName') == 'Shepherd' then
+                for _, tokenGUID in ipairs(flockTracker[figure.getGUID()]) do
+                    --log('shepherd found ' .. tokenGUID)
+                    table.insert(fullFlockWithDups, getObjectFromGUID(tokenGUID))
+                end
+            end
+        end
+
+        -- Build the list of unique sheep tokens, using a hash table to track sheep we already found
+        local hash = {}
+        local fullFlock = {}
+
+        for _, token in ipairs(fullFlockWithDups) do
+          if (not hash[token.getGUID()]) then
+            table.insert(fullFlock, token)
+            hash[token.getGUID()] = true
+          end
+        end
+
+        for _, token in ipairs(fullFlock) do
+            --log ('flock has ' .. token.getGUID())
             if token.getVar('tokenName') == 'Sheep' then
                 score = score + token.getVar('count')
             elseif token.getVar('tokenName') == 'Wolf' then
@@ -309,6 +353,7 @@ function HaSScoreFlockCoroutine()
             end
             sheepTileBag.putObject(token)
         end
+
         for _, feature in ipairs(traversedSpecialFeatures) do
             if feature == 'Sheep' then
                 score = score + 1
@@ -317,6 +362,7 @@ function HaSScoreFlockCoroutine()
         if hasWolf then score = 0 end
         for _, figure in ipairs(traversedSpecialFigures) do
             if figure.getVar('figureName') == 'Shepherd' then
+                flockTracker[shepherd.getGUID()] = {}
                 local winner
                 if score > 0 then winner = true else winner = false end
                 table.insert(removedFigures, {guid=figure.getGUID(), winner=winner})
@@ -343,6 +389,20 @@ function HaSScoreFlockCoroutine()
         nextState('next')
     end
     return 1
+end
+
+-- If a player wants to move a sheep around, remove it from being tracked
+function HaSOnPickup(pickedUpObject)
+  if table.contains(SHEEP_TOKEN_TYPES, pickedUpObject.getVar('tokenName')) and flockTracker ~= nil then
+    for _, shepTable in pairs(flockTracker) do
+      for i, tokenGUID in ipairs(shepTable) do
+        if pickedUpObject.getGUID() == tokenGUID then
+          table.remove(shepTable, i)
+          return
+        end
+      end
+    end
+  end
 end
 
 function HaSClearShepherdButtons()
@@ -474,9 +534,11 @@ end
 --Restore any saved data from HaS expansion
 function HaSLoadData(saved_data)
     shepherdAwaitingAction = saved_data.shepherdAwaitingAction
+    flockTracker = saved_data.flockTracker
 end
 
 --Save data from HaS expansion
 function HaSSaveData(saved_data)
     saved_data.shepherdAwaitingAction = shepherdAwaitingAction
+    saved_data.flockTracker = flockTracker
 end
