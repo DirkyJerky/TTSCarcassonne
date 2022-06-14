@@ -109,6 +109,12 @@ globalTileData = {
 #include !/TTSCarcassonne/tile_data/school/Card.343948.ttslua
 #include !/TTSCarcassonne/tile_data/school/Card.b083ca.ttslua
 --StartingTileWindRoses
+#include !/TTSCarcassonne/tile_data/wind roses/Card.2a542e.ttslua
+#include !/TTSCarcassonne/tile_data/wind roses/Card.31b9f0.ttslua
+#include !/TTSCarcassonne/tile_data/wind roses/Card.85775d.ttslua
+#include !/TTSCarcassonne/tile_data/wind roses/Card.b9230e.ttslua
+#include !/TTSCarcassonne/tile_data/wind roses/Card.dcc58a.ttslua
+#include !/TTSCarcassonne/tile_data/wind roses/Card.f6d589.ttslua
 --BaseTiles
 #include !/TTSCarcassonne/tile_data/base/Card.063f86.ttslua
 #include !/TTSCarcassonne/tile_data/base/Card.07a858.ttslua
