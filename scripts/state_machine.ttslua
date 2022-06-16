@@ -326,11 +326,10 @@ function playerStateHandler()
         PnDCheckTileForMagicPortal(lastPlacedTileX, lastPlacedTileZ)
         return nextState('next')
     elseif turnState == 'check added tile feature - gold' then
-        goldCheckTileForGold()
-        return nextState('next')
+        return goldCheckTileForGold()
     elseif turnState == 'place gold on tile' then
         goldAddGoldToTile(lastPlacedTileX, lastPlacedTileZ)
-        nextState('next')
+        return nextState('next')
     elseif turnState == 'awaiting gold placement' then
         gameNotification({"MESSAGE_GOLD_MINES_PLACE_GOLD_PROMPT"}, NEUTRAL_COLOR, activePlayers[currentPlayer])
         return goldDisplayButtons()
@@ -521,6 +520,7 @@ function nextState(action)
     if action == nil then action = 'next' end
     if stateMachine[turnState] ~= nil then
         if stateMachine[turnState][action] ~= nil then
+            --log(turnState .. '[' .. action .. '] -> ' .. stateMachine[turnState][action])
             turnState = stateMachine[turnState][action]
             return stateHandler()
         else

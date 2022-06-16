@@ -24,6 +24,7 @@ function goldCheckTileForGold()
             end
         end
     end
+    return nextState('next')
 end
 
 function goldAddGoldToTile(xIndex, zIndex)
