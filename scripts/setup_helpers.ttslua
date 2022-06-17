@@ -47,7 +47,22 @@ function placeStartingItem(starting_tile_id, expansion_id, item_id, location_ove
                 if sub_item_id == #item_settings.contents - 1 then
                     prepareStartingTileLock = true
                     params.callback_owner = Global
-                    params.callback = "prepareStartingTileUnlock"
+                    if sub_item_settings.delete then
+                        params.smooth = false
+                        params.callback_function = function(new_obj)
+                            prepareStartingTileLock = false
+                            new_obj.destruct()
+                        end
+                    else
+                        params.callback_function = function(new_obj)
+                            prepareStartingTileLock = false
+                        end
+                    end
+                elseif sub_item_settings.delete then
+                    params.smooth = false
+                    params.callback_function = function(new_obj)
+                        new_obj.destruct()
+                    end
                 end
                 -- if item_id == 'WoFStartingTiles' then
                 --     params.params = {position = position, rotation = sub_item_settings.rotation}

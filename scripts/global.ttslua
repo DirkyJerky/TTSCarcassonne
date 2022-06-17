@@ -222,6 +222,13 @@ EXPANSION_BAGS = {
             [2] = {guid = 'b083ca'},
         }}
     }},
+    ['WindRoses'] = {guid = '05a4f4', contents = {
+        ['WindRoseStartingTile'] = {guid = 'c1a999', contents = {
+            [1] = {guid = '180a7b'},
+            [2] = {guid = 'dcc58a'}
+        }},
+        ['WindRoseTiles'] = {guid = '46cb81'}
+    }},
     --Mini Expansions
     ['Flier'] = {guid = 'a50c26', contents = {
         ['FlierTiles'] = {guid = 'f006d5'},

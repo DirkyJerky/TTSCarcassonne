@@ -109,6 +109,7 @@ LOCALIZED_STRINGS = {
     ["TOOLTIP_CITY_OF_CARCASSONNE"] = "The City of Carcassonne starting tiles. Whenever you place a tile that scores points for others, you can store a follower here. These followers can be snuck into features after they are finished, but before they are scored.",
     ["TOOLTIP_WHEEL_OF_FORTUNE"] = "Draw tiles to spin the wheel for an extra element of chance.",
     ["TOOLTIP_SCHOOL"] = "2 tiles that add a school before adding normal tiles",
+    ["TOOLTIP_WINDROSES"] = "Place wind roses for extra points",
 
       --messages
 
@@ -706,6 +707,7 @@ LOCALIZED_STRINGS = {
     ["TOOLTIP_RIVER_BB5"] = "12 riviertegels met extra permaente schapen voor herders.",
     ["TOOLTIP_CITY_OF_CARCASSONNE"] = "De starttegels De Stad Carcassonne. Telkens als je een tegel legt waardoor alleen anderen punten krijgt, mag je hier een meeple zetten. Deze meeples kunnen op andere projecten gezet worden nadat die zijn afgebouwd, maar voordat de punten zijn geteld.",
     ["TOOLTIP_WHEEL_OF_FORTUNE"] = "Trek tegels om het rad van fortuin te laten draaien als extra kanselement.",
+    ["TOOLTIP_WINDROSES"] = "Place wind roses for extra points",
 
       --messages
 

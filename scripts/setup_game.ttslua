@@ -27,7 +27,8 @@ tileSettings = {
     ['GamesQuarterlyTiles'] = {['GamesQuarterly'] = {['GamesQuarterlyTiles'] = {}}},
     ['GoldminesTiles'] = {['Goldmines'] = {['GoldminesTiles'] = {}}},
     ['SpielPromoTiles'] = {['SpielPromo'] = {['SpielPromoTiles'] = {}}},
-    ['RussianPromoTiles'] = {['RussianPromo'] = {['RussianPromoTiles'] = {}}}
+    ['RussianPromoTiles'] = {['RussianPromo'] = {['RussianPromoTiles'] = {}}},
+    ['WindRoseTiles'] = {['WindRoses'] = {['WindRoseTiles'] = {}}}
 }
 
 --the pig should start at this position relative to the center of the wheel
@@ -102,6 +103,12 @@ startingTileSettings = {
             [2] = {position = {x=1.59, y=2.0, z=0}, rotation = {x=0,y=180,z=0}, shuffle = false, lock = true, addToGrid = true},
         }},
         ['Teacher'] = {position = {x=0.60, y=2.0, z=0}, rotation = {x=0,y=90,z=0}, shuffle = false, lock = true}
+    }},
+    ['StartingTileWindRoses'] = {['WindRoses'] = {
+        ['WindRoseStartingTile'] = {position = {x=0.0, y=2.32, z=11.13}, rotation = {x=0,y=180,z=180}, shuffle = false, lock = false, contents = {
+          [1] = {position = {x=0, y=-2.0, z=11.13}, rotation = {x=0,y=180,z=0}, delete = true},
+          [2] = {position = {x=0, y=2.0, z=0}, rotation = {x=0,y=180,z=0}, shuffle = false, lock = true, addToGrid = true}
+        }}
     }},
 }
 
@@ -635,6 +642,10 @@ function prepareStartingTiles()
     if controlPanelSettings['StartingTileSchool'] then
         placeStartingItem('StartingTileSchool', 'School', 'SchoolStartingTiles', nil, 0)
         placeStartingItem('StartingTileSchool', 'School', 'Teacher', nil, 0)
+    end
+
+    if controlPanelSettings['StartingTileWindRoses'] then
+        placeStartingItem('StartingTileWindRoses', 'WindRoses', 'WindRoseStartingTile', nil, 0)
     end
 
     riverPrepareStartingTiles(placeRiverAsStartingTile)
