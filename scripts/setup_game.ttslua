@@ -28,7 +28,7 @@ tileSettings = {
     ['GoldminesTiles'] = {['Goldmines'] = {['GoldminesTiles'] = {}}},
     ['SpielPromoTiles'] = {['SpielPromo'] = {['SpielPromoTiles'] = {}}},
     ['RussianPromoTiles'] = {['RussianPromo'] = {['RussianPromoTiles'] = {}}},
-    ['WindRoseTiles'] = {['WindRoses'] = {['WindRoseTiles'] = {}}}
+    ['StartingTileWindRoses'] = {['WindRoses'] = {['WindRoseTiles'] = {}}}
 }
 
 --the pig should start at this position relative to the center of the wheel
@@ -646,6 +646,7 @@ function prepareStartingTiles()
 
     if controlPanelSettings['StartingTileWindRoses'] then
         placeStartingItem('StartingTileWindRoses', 'WindRoses', 'WindRoseStartingTile', nil, 0)
+        initWindRose()
     end
 
     riverPrepareStartingTiles(placeRiverAsStartingTile)

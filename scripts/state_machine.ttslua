@@ -58,13 +58,16 @@ stateMachine = {
         ['next'] = 'check added tile feature - gold'
     },
     ['check added tile feature - gold'] = {
-        ['next'] = 'awaiting figure decision',
+        ['next'] = 'check added tile feature - wind roses',
         ['has gold'] = 'place gold on tile'
     },
     ['place gold on tile'] = {
-        ['next'] = 'awaiting gold placement'
+        ['next'] = 'check added tile feature - wind roses'
     },
     ['awaiting gold placement'] = {
+        ['next'] = 'check added tile feature - wind roses'
+    },
+    ['check added tile feature - wind roses'] = {
         ['next'] = 'awaiting figure decision'
     },
     ['awaiting figure decision'] = {
@@ -327,6 +330,8 @@ function playerStateHandler()
         return nextState('next')
     elseif turnState == 'check added tile feature - gold' then
         return goldCheckTileForGold()
+    elseif turnState == 'check added tile feature - wind roses' then
+        return windroseOnTilePlace()
     elseif turnState == 'place gold on tile' then
         goldAddGoldToTile(lastPlacedTileX, lastPlacedTileZ)
         return nextState('next')

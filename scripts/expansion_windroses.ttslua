@@ -1,0 +1,69 @@
+local windRoseX, windRoseZ
+local windroseFeatures = {'WindRose-NW', 'WindRose-NE', 'WindRose-SW', 'WindRose-SE', 'WindRose-Blue'}
+
+function initWindRose()
+    windRoseX = MIDDLE_X_OFFSET
+    windRoseZ = MIDDLE_Z_OFFSET
+end
+
+function windroseOnTilePlace()
+    if controlPanelSettings['StartingTileWindRoses'] then
+        local tileData = getTileDataForTile(getObjectFromGUID(tileGrid[lastPlacedTileX][lastPlacedTileZ].tile_guid))
+        local specialFeatures = tileData.specialFeatures
+        if specialFeatures ~= nil then
+            for _, specialFeature in ipairs(specialFeatures) do
+                if table.contains(windroseFeatures, specialFeature[1]) then
+                    windroseDoTile(string.sub(specialFeature[1], 10))
+                    return nextState('next')
+                end
+            end
+        end
+    end
+    return nextState('next')
+end
+
+-- NW = -x, +z-
+-- NE = +x, +z
+-- SW = -x, -z
+-- SE = +x, -z
+function windroseDoTile(feature)
+    if feature == 'Blue' then
+        windRoseX = lastPlacedTileX
+        windRoseZ = lastPlacedTileZ
+        allGameMessage({"MESSAGE_WINDROSE_BLUE", {'{p1}', getPlayerOwnerName(activePlayers[currentPlayer])}}, player_color_tints[activePlayers[currentPlayer]])
+    elseif feature == 'NW' then
+        if lastPlacedTileX <= windRoseX and lastPlacedTileZ >= windRoseZ then
+            allGameMessage({"MESSAGE_WINDROSE_POINTS", {'{p1}', getPlayerOwnerName(activePlayers[currentPlayer])}}, player_color_tints[activePlayers[currentPlayer]])
+            scorePoints(activePlayers[currentPlayer], 'Windrose', 3, true)
+        else
+            broadcastToColor(translate("MESSAGE_WINDROSE_MISALIGN"), activePlayers[currentPlayer], NEUTRAL_COLOR)
+        end
+    elseif feature == 'NE' then
+        if lastPlacedTileX >= windRoseX and lastPlacedTileZ >= windRoseZ then
+            allGameMessage({"MESSAGE_WINDROSE_POINTS", {'{p1}', getPlayerOwnerName(activePlayers[currentPlayer])}}, player_color_tints[activePlayers[currentPlayer]])
+            scorePoints(activePlayers[currentPlayer], 'Windrose', 3, true)
+        else
+            broadcastToColor(translate("MESSAGE_WINDROSE_MISALIGN"), activePlayers[currentPlayer], NEUTRAL_COLOR)
+        end
+    elseif feature == 'SW' then
+        if lastPlacedTileX <= windRoseX and lastPlacedTileZ <= windRoseZ then
+            allGameMessage({"MESSAGE_WINDROSE_POINTS", {'{p1}', getPlayerOwnerName(activePlayers[currentPlayer])}}, player_color_tints[activePlayers[currentPlayer]])
+            scorePoints(activePlayers[currentPlayer], 'Windrose', 3, true)
+        else
+            broadcastToColor(translate("MESSAGE_WINDROSE_MISALIGN"), activePlayers[currentPlayer], NEUTRAL_COLOR)
+        end
+    elseif feature == 'SE' then
+        if lastPlacedTileX >= windRoseX and lastPlacedTileZ <= windRoseZ then
+            allGameMessage({"MESSAGE_WINDROSE_POINTS", {'{p1}', getPlayerOwnerName(activePlayers[currentPlayer])}}, player_color_tints[activePlayers[currentPlayer]])
+            scorePoints(activePlayers[currentPlayer], 'Windrose', 3, true)
+        else
+            broadcastToColor(translate("MESSAGE_WINDROSE_MISALIGN"), activePlayers[currentPlayer], NEUTRAL_COLOR)
+        end
+    end
+end
+
+function windroseInitializeScoreSummary(player)
+    if controlPanelSettings['StartingTileWindRoses'] then
+        player['Windrose'] = 0
+    end
+end

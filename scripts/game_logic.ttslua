@@ -255,6 +255,7 @@ function initializeScoreSummary()
         KnRBInitializeScoreSummary(scoreSummary[player_color])
         goldInitializeScoreSummary(scoreSummary[player_color])
         towerInitializeScoreSummary(scoreSummary[player_color])
+        windroseInitializeScoreSummary(scoreSummary[player_color])
         if pigIsEnabled() then
             scoreSummary[player_color]['Wheel'] = 0
         end

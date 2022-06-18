@@ -339,6 +339,9 @@ LOCALIZED_STRINGS = {
     ["MESSAGE_KING_ERROR_MISSING"] = "Error: King missing! The token needs to remain out in order to awarded.",
     ["MESSAGE_TRADE_TOKENS_ERROR_MISSING"] = "Error: {s1} pile missing! The pile needs to remain out in order to draw trade goods",
     ["MESSAGE_TOWER_ERROR_MISSING_CAPTURE"] = "ERROR: Could not find the captor of the prisoner.",
+    ["MESSAGE_WINDROSE_POINTS"] = "{p1} scored 3 points for aligning a part of the windrose",
+    ["MESSAGE_WINDROSE_BLUE"] = "{p1} has moved the central windrose",
+    ["MESSAGE_WINDROSE_MISALIGN"] = "No points for a misaligned windrose",
 
       --Hint Markers
 
@@ -707,7 +710,6 @@ LOCALIZED_STRINGS = {
     ["TOOLTIP_RIVER_BB5"] = "12 riviertegels met extra permaente schapen voor herders.",
     ["TOOLTIP_CITY_OF_CARCASSONNE"] = "De starttegels De Stad Carcassonne. Telkens als je een tegel legt waardoor alleen anderen punten krijgt, mag je hier een meeple zetten. Deze meeples kunnen op andere projecten gezet worden nadat die zijn afgebouwd, maar voordat de punten zijn geteld.",
     ["TOOLTIP_WHEEL_OF_FORTUNE"] = "Trek tegels om het rad van fortuin te laten draaien als extra kanselement.",
-    ["TOOLTIP_WINDROSES"] = "Place wind roses for extra points",
 
       --messages
 
