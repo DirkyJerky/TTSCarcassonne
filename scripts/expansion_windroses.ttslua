@@ -67,3 +67,14 @@ function windroseInitializeScoreSummary(player)
         player['Windrose'] = 0
     end
 end
+
+function windroseOnSave(save_data)
+    save_data.windRoseX = windRoseX
+    save_data.windRoseZ = windRoseZ
+end
+
+
+function windroseOnLoad(save_data)
+    windRoseX = save_data.windRoseX
+    windRoseZ = save_data.windRoseZ
+end

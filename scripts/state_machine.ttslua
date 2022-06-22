@@ -62,7 +62,7 @@ stateMachine = {
         ['has gold'] = 'place gold on tile'
     },
     ['place gold on tile'] = {
-        ['next'] = 'check added tile feature - wind roses'
+        ['next'] = 'awaiting gold placement'
     },
     ['awaiting gold placement'] = {
         ['next'] = 'check added tile feature - wind roses'

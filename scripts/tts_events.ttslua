@@ -35,6 +35,7 @@ function onload(save_state)
         HaSLoadData(saved_data)
         flierLoadData(saved_data)
         ferryLoadData(saved_data)
+        windroseLoadData(saved_data)
         finalTile_GUID = saved_data.finalTile_GUID
         lastPlacedTileX = saved_data.lastPlacedTileX
         lastPlacedTileZ = saved_data.lastPlacedTileZ
@@ -189,6 +190,7 @@ function onSave()
     HaSSaveData(toSave)
     flierSaveData(toSave)
     ferrySaveData(toSave)
+    windroseSaveData(toSave)
     return jsonencode(toSave)
 end
 
