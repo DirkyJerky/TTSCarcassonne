@@ -153,11 +153,12 @@ function KnRBScoreFeature()
                     else
                         returnFigures()
                     end
-                    return
+                    return true
                 end
             end
         end
     end
+    return false
 end
 
 function KnRBPromptMovingCount()

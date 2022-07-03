@@ -40,6 +40,7 @@ function PnDPrepareNeutralItems(offset)
     end
     if controlPanelSettings['PnDDragon'] then
         dragon_GUID, offset = prepareNeutralItemHelper(PnDDragon, offset)
+        getObjectFromGUID(dragon_GUID).interactable = false
     end
 
     return offset

@@ -1379,7 +1379,9 @@ function scoreFeatures()
             return
         end
         resetTraversal()
-        KnRBScoreFeature()
+        if KnRBScoreFeature() then
+            return
+        end
     end
     scoring = false
     followersScored = {}
